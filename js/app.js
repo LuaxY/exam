@@ -23,12 +23,14 @@ app.controller('ClassController', function($scope, $http){
     };
 
     self.addClass = function(){
+        $http.get('ajax.php?q=addClass&c='+self.newClass.name);
         self.classesList[self.newClass.name] = self.newClass;
         self.newClass = {};
     };
 
     self.removeClass = function(rmClass){
         delete self.classesList[rmClass];
+        $http.get('ajax.php?q=removeClass&c='+rmClass);
     };
 });
 

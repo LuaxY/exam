@@ -16,6 +16,10 @@ class School
                 $data = $this->classes();
                 break;
             case 'addClass':
+                $this->db->query("INSERT INTO classes (name) VALUES ('".$_GET['c']."')");
+                break;
+            case 'removeClass':
+                $this->db->query("DELETE FROM classes WHERE name = '".$_GET['c']."'");
                 break;
             case 'addStudent':
                 break;
