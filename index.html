@@ -25,7 +25,7 @@
                         <tr ng-repeat="(class, students) in classCtr.classesList">
                             <td><a href ng-click="classCtr.showStudents(class)">{{class}}</a></td>
                             <td><a href><img src="imgs/edit.png"></a></td>
-                            <td><a href><img src="imgs/remove.png"></a></td>
+                            <td><a href ng-click="classCtr.removeClass(class)"><img src="imgs/remove.png"></a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -26,6 +26,10 @@ app.controller('ClassController', function($scope, $http){
         self.classesList[self.newClass.name] = self.newClass;
         self.newClass = {};
     };
+
+    self.removeClass = function(rmClass){
+        delete self.classesList[rmClass];
+    };
 });
 
 app.controller('StudentController', function($scope, $http){
