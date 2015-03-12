@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : Local
@@ -29,7 +29,10 @@ CREATE TABLE `classes` (
 -- ----------------------------
 -- Records of classes
 -- ----------------------------
-INSERT INTO `classes` VALUES ('1', '1', 'B3');
+INSERT INTO `classes` VALUES ('1', '1', 'Bachelor 1');
+INSERT INTO `classes` VALUES ('2', '1', 'Bachelor 2');
+INSERT INTO `classes` VALUES ('3', '1', 'Bachelor 3');
+INSERT INTO `classes` VALUES ('4', '1', 'Expert 1');
 
 -- ----------------------------
 -- Table structure for schools
@@ -61,6 +64,19 @@ CREATE TABLE `students` (
 -- ----------------------------
 -- Records of students
 -- ----------------------------
+-- B1
 INSERT INTO `students` VALUES ('1', '1', 'Yann', 'Guineau');
 INSERT INTO `students` VALUES ('2', '1', 'Saïd', 'Mezhoud');
 INSERT INTO `students` VALUES ('3', '1', 'Thibaut', 'Taelman');
+-- B2
+INSERT INTO `students` VALUES ('4', '2', 'Folco', 'Durand');
+INSERT INTO `students` VALUES ('5', '2', 'Charles', 'Secchi');
+INSERT INTO `students` VALUES ('6', '2', 'Vincent', 'Biaudis');
+-- B3
+INSERT INTO `students` VALUES ('7', '3', 'Chris', 'Limongi');
+INSERT INTO `students` VALUES ('8', '3', 'Arnaud', 'Trousselard');
+INSERT INTO `students` VALUES ('9', '3', 'Boris', 'Despiau');
+-- B4
+INSERT INTO `students` VALUES ('10', '4', 'Julien', 'Nikos');
+INSERT INTO `students` VALUES ('11', '4', 'Thomas', 'Burgio');
+INSERT INTO `students` VALUES ('12', '4', 'Jérémy', 'Bona');
