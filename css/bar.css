@@ -1,0 +1,15 @@
+.header{
+    margin: -20px 0 0 0;
+    height: 80px;
+    background-color: rgb(76, 137, 168);
+}
+
+.text-muted{
+    padding: 20px 0 0 100px;
+    color: white;
+}
+
+.students{
+    padding: 0 0 0 50px;
+    border-left: 1px solid #CCC;
+}
