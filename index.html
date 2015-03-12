@@ -6,22 +6,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/bar.css">
-
 </head>
 <body>
     <div class="header">
-        <!--<nav>
-            <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li>
-            </ul>
-        </nav>-->
         <h3 class="text-muted">Examen</h3>
     </div>
     <div class="container">
-        <div class="row content">
-            <div class="col-lg-3 classes" ng-controller="ClassController as classes">
+        <div class="row content" ng-controller="ClassController as classCtr">
+            <div class="col-lg-3 classes">
                 <h2>Classes</h2>
                 <table class="table">
                     <thead>
@@ -30,17 +22,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="classe in classes.classes">
-                            <td><a href>{{classe}}</a></td>
+                        <tr ng-repeat="(class, students) in classCtr.classesList">
+                            <td><a href ng-click="classCtr.showStudents(class)">{{class}}</a></td>
                             <td><a href><img src="imgs/edit.png"></a></td>
                             <td><a href><img src="imgs/remove.png"></a></td>
                         </tr>
                     </tbody>
                 </table>
+                <form name="classForm" ng-submit="classCtr.addClass()">
+                    <input ng-model="classCtr.newClass.name" type="text" name="name"> <input type="image" src="imgs/add.png">
+                </form>
             </div>
 
-            <div class="col-lg-8 students" ng-controller="StudentController as students">
-                <h2>Etudiants</h2>
+            <div class="col-lg-8 students" ng-controller="StudentController as studentCtr" ng-show="classCtr.currentClass">
+                <h2>Etudiants de la classe {{classCtr.currentClass}}</h2>
                 <table class="table">
                     <thead>
                         <tr>
@@ -51,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="student in students.students">
+                        <tr ng-repeat="student in classCtr.classesList[classCtr.currentClass]">
                             <td>{{student.firstname}}</td>
                             <td>{{student.lastname}}</td>
                             <td><a href><img src="imgs/edit.png"></a></td>
@@ -59,13 +54,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <input type="text" name="addStudent"> <input type="image" src="imgs/add.png">
             </div>
         </div>
-
-        <footer class="footer">
-            <p>Y-nov Ingésup</p>
-        </footer>
-
     </div>
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>

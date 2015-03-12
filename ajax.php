@@ -1,45 +1,51 @@
 <?php
 
-switch(@$_GET['q'])
+class School
 {
-    case 'classes':
-        $data = classes();
-        break;
-    case 'students':
-        $data = students(@$_GET['c']);
-        break;
-    default:
-        $data = json_encode(array("error" => "invalid request"));
-        break;
+    private $db;
+
+    public function handle()
+    {
+        $this->db = new PDO('mysql:host=localhost;dbname=exam', 'root', '');
+        $this->db->exec("SET CHARACTER SET utf8");
+        $data = null;
+
+        switch(@$_GET['q'])
+        {
+            case 'classes':
+                $data = $this->classes();
+                break;
+            case 'addClass':
+                break;
+            case 'addStudent':
+                break;
+            default:
+                $data = json_encode(array("error" => "invalid request"));
+                break;
+        }
+
+        return $data;
+    }
+
+    private function classes()
+    {
+        $req = $this->db->query("SELECT * FROM classes");
+        $classes = $req->fetchAll(PDO::FETCH_ASSOC);
+        $ret = array();
+
+        $i = 0;
+        foreach ($classes as $class)
+        {
+            $req = $this->db->query("SELECT * FROM students WHERE classe_id = '".$class['id']."'");
+            $students = $req->fetchAll(PDO::FETCH_ASSOC);
+            $ret[$class['name']] = $students;
+            $classes[$i]['students'] = $students;
+            $i++;
+        }
+
+        return json_encode($ret);
+    }
 }
 
-echo $data;
-
-function classes()
-{
-    return json_encode(
-        array(
-            "Bachelor 1",
-            "Bachelor 2",
-            "Bachelor 3",
-            "Expert 1",
-            "Expert 2",
-        )
-    );
-}
-
-function students($classes = null)
-{
-    return json_encode(
-        array(
-            array(
-                "firstname" => "Yann",
-                "lastname" => "Guineau",
-            ),
-            array(
-                "firstname" => "Test",
-                "lastname" => "123",
-            ),
-        )
-    );
-}
+$school = new School();
+echo $school->handle();
