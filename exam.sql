@@ -32,7 +32,7 @@ CREATE TABLE `classes` (
 INSERT INTO `classes` VALUES ('1', '1', 'Bachelor 1');
 INSERT INTO `classes` VALUES ('2', '1', 'Bachelor 2');
 INSERT INTO `classes` VALUES ('3', '1', 'Bachelor 3');
-INSERT INTO `classes` VALUES ('4', '1', 'Bachelor 4');
+INSERT INTO `classes` VALUES ('4', '1', 'Expert 1');
 
 -- ----------------------------
 -- Table structure for schools
