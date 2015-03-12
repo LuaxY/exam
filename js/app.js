@@ -1,15 +1,28 @@
 var app = angular.module('exam', []);
 
-var classes = {
-    "classes": [
-        "Bachelor 1",
-        "Bachelor 2",
-        "Bachelor 3",
-        "Expert 1",
-        "Expert 2",
-    ]
-};
+app.controller('ClassController', function($scope, $http){
+    var self = this;
 
-app.controller('ClassController', function(){
-    this.classes = classes.classes;
+    $http.get('ajax.php?q=classes').
+        success(function(data, status, headers, config) {
+            self.classes = data;
+        }).
+        error(function(data, status, headers, config) {
+            alert("Impossible de récupérer la liste des classes");
+            self.classes = [];
+        });
+});
+
+app.controller('StudentController', function($scope, $http){
+    var self = this;
+
+    $http.get('ajax.php?q=students&c=Bachelor 1').
+        success(function(data, status, headers, config) {
+            self.students = data;
+        }).
+        error(function(data, status, headers, config) {
+            alert("Impossible de récupérer la liste des classes");
+            self.students = [];
+        });
+
 });

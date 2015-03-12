@@ -39,7 +39,7 @@
                 </table>
             </div>
 
-            <div class="col-lg-8 students">
+            <div class="col-lg-8 students" ng-controller="StudentController as students">
                 <h2>Etudiants</h2>
                 <table class="table">
                     <thead>
@@ -51,48 +51,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Yann</td>
-                            <td>Guineau</td>
+                        <tr ng-repeat="student in students.students">
+                            <td>{{student.firstname}}</td>
+                            <td>{{student.lastname}}</td>
                             <td><a href><img src="imgs/edit.png"></a></td>
                             <td><a href><img src="imgs/remove.png"></a></td>
                         </tr>
-
-                        <tr>
-                            <td>Yann</td>
-                            <td>Guineau</td>
-                            <td>X</td>
-                            <td>X</td>
-                        </tr>
-
-                        <tr>
-                            <td>Yann</td>
-                            <td>Guineau</td>
-                            <td>X</td>
-                            <td>X</td>
-                        </tr>
-
-                        <tr>
-                            <td>Yann</td>
-                            <td>Guineau</td>
-                            <td>X</td>
-                            <td>X</td>
-                        </tr>
-
-                        <tr>
-                            <td>Yann</td>
-                            <td>Guineau</td>
-                            <td>X</td>
-                            <td>X</td>
-                        </tr>
-
-                        <tr>
-                            <td>Yann</td>
-                            <td>Guineau</td>
-                            <td>X</td>
-                            <td>X</td>
-                        </tr>
-
                     </tbody>
                 </table>
             </div>
