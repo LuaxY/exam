@@ -29,10 +29,10 @@ CREATE TABLE `classes` (
 -- ----------------------------
 -- Records of classes
 -- ----------------------------
-INSERT INTO `classes` VALUES ('1', '1', 'B1');
-INSERT INTO `classes` VALUES ('2', '1', 'B2');
-INSERT INTO `classes` VALUES ('3', '1', 'B3');
-INSERT INTO `classes` VALUES ('4', '1', 'B4');
+INSERT INTO `classes` VALUES ('1', '1', 'Bachelor 1');
+INSERT INTO `classes` VALUES ('2', '1', 'Bachelor 2');
+INSERT INTO `classes` VALUES ('3', '1', 'Bachelor 3');
+INSERT INTO `classes` VALUES ('4', '1', 'Bachelor 4');
 
 -- ----------------------------
 -- Table structure for schools
