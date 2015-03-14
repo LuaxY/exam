@@ -24,8 +24,24 @@
                     <tbody>
                         <tr ng-repeat="(class, students) in classCtr.classesList">
                             <td><a href ng-click="classCtr.showStudents(class)">{{class}}</a></td>
-                            <td><a href><img src="imgs/edit.png"></a></td>
-                            <td><a href ng-click="classCtr.removeClass(class)"><img src="imgs/remove.png"></a></td>
+                            <td>
+                                <div ng-show="classCtr.seeState()">
+                                    <img ng-click="classCtr.changeState()" src="imgs/edit.png"></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-hide="classCtr.seeStateInverse()">
+                                    <form name="classForm" ng-submit="classCtr.editClass(class, students.id)">
+                                        <input type="text" name="name" ng-model="class">
+                                        <input ng-click="classCtr.editClass()" type="image" src="imgs/save.png">
+                                        <input type="image" src="imgs/cancel.png">
+                                    </form>
+                                </div>
+                            </td>
+                            <td>
+                                <a href ng-click="classCtr.removeClass(class)">
+                                <img src="imgs/remove.png"></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -46,7 +62,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="student in classCtr.classesList[classCtr.currentClass]">
+                        <tr ng-repeat="student in classCtr.classesList[classCtr.currentClass]['student']">
                             <td>{{student.firstname}}</td>
                             <td>{{student.lastname}}</td>
                             <td><a href><img src="imgs/edit.png"></a></td>

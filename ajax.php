@@ -18,6 +18,9 @@ class School
             case 'addClass':
                 $this->db->query("INSERT INTO classes (name) VALUES ('".$_GET['c']."')");
                 break;
+            case 'editClass' :
+                $this->db->query("UPDATE classes SET name = '".$_GET['c']."' WHERE id = '".$_GET['id']."'");
+                break;
             case 'removeClass':
                 $this->db->query("DELETE FROM classes WHERE name = '".$_GET['c']."'");
                 break;
@@ -42,11 +45,11 @@ class School
         {
             $req = $this->db->query("SELECT * FROM students WHERE classe_id = '".$class['id']."'");
             $students = $req->fetchAll(PDO::FETCH_ASSOC);
-            $ret[$class['name']] = $students;
+            $ret[$class['name']]['student'] = $students;
+            $ret[$class['name']]['id'] = $class['id'];
             $classes[$i]['students'] = $students;
             $i++;
         }
-
         return json_encode($ret);
     }
 }
