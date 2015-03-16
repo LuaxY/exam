@@ -16,7 +16,7 @@ class School
                 $data = $this->classes();
                 break;
             case 'addClass':
-                $this->db->query("INSERT INTO classes (name) VALUES ('".$_GET['c']."')");
+                $this->db->query("INSERT INTO classes (school_id, name) VALUES (1, '".$_GET['c']."')");
                 break;
             case 'editClass' :
                 $this->db->query("UPDATE classes SET name = '".$_GET['c']."' WHERE id = '".$_GET['id']."'");
@@ -24,7 +24,8 @@ class School
             case 'removeClass':
                 $this->db->query("DELETE FROM classes WHERE name = '".$_GET['c']."'");
                 break;
-            case 'addStudent':
+            case 'addStudent': // firstname = chaine avant espace, lastname = chaine après espace1
+				$this->db->query("INSERT INTO students (classe_id, firstname, lastname) VALUES ()");
                 break;
             default:
                 $data = json_encode(array("error" => "invalid request"));
