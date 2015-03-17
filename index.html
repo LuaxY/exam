@@ -31,9 +31,9 @@
                             </td>
                             <td>
                                 <div ng-hide="classCtr.seeStateInverse()">
-                                    <form name="classForm" ng-submit="classCtr.editClass(class, students.id)">
+                                    <form name="classForm" ng-submit="classCtr.backupState()">
                                         <input type="text" name="name" ng-model="class">
-                                        <input ng-click="classCtr.editClass()" type="image" src="imgs/save.png">
+                                        <input ng-click="classCtr.editClass(class, students.id)" type="image" src="imgs/save.png">
                                         <input type="image" src="imgs/cancel.png">
                                     </form>
                                 </div>
@@ -70,7 +70,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <input type="text" name="addStudent"> <input type="image" src="imgs/add.png">
+                <form name="studentForm" ng-submit="classCtr.addStudent()">
+                    <input ng-model="classCtr.newStudent.name" type="text" name="name"> <input type="image" src="imgs/add.png">
             </div>
         </div>
     </div>

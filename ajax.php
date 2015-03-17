@@ -24,9 +24,17 @@ class School
             case 'removeClass':
                 $this->db->query("DELETE FROM classes WHERE name = '".$_GET['c']."'");
                 break;
-            case 'addStudent': // firstname = chaine avant espace, lastname = chaine après espace1
-				$this->db->query("INSERT INTO students (classe_id, firstname, lastname) VALUES ()");
+            
+            case 'addStudent':
+				$this->db->query();
                 break;
+            case 'editStudent':
+				$this->db->query();
+                break;
+            case 'removeStudent':
+				$this->db->query();
+                break;
+            
             default:
                 $data = json_encode(array("error" => "invalid request"));
                 break;
